@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pearsource - Coming Soon</title>
+    <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full-page styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #7C9C68, #E8F5E9);
+            color: #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Geometric overlay */
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/hexellence.png');
+            opacity: 0.1;
+        }
+
+        /* Animated background gradient */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphic container */
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            max-width: 500px;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Logo */
+        .logo {
+            max-width: 160px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        /* Heading */
+        .heading {
+            font-size: 30px;
+            margin: 20px 0;
+            font-weight: 600;
+            color: #2F3E1D;
+        }
+
+        /* Subheading */
+        .subheading {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* Instagram button */
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            background: #E4405F;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(228, 64, 95, 0.3);
+            gap: 10px;
+        }
+        .instagram-link:hover {
+            background: #C13584;
+            box-shadow: 0 6px 15px rgba(193, 53, 132, 0.5);
+            transform: translateY(-3px);
+        }
+
+        /* Instagram icon */
+        .instagram-icon {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Geometric overlay -->
+    <div class="overlay"></div>
+
+    <!-- Main content -->
+    <div class="container">
+        <img src="pearsource_logo_transparent.png" alt="Pearsource Logo" class="logo">
+        <h1 class="heading">Exciting Things Coming Soon!</h1>
+        <p class="subheading">We’re working on something amazing. Stay tuned.</p>
+        <a href="https://instagram.com/PearSourceHQ" class="instagram-link" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="instagram-icon">
+            Follow Us
+        </a>
+    </div>
+
+</body>
+</html>
