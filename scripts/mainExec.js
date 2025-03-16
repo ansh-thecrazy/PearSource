@@ -31,9 +31,10 @@ form.addEventListener('submit', e => {
 
 // Open Slider Form
 document.getElementById("open-form-btn").addEventListener("click", function () {
-    document.getElementById("slider-form").classList.add("active");
-	document.getElementById('close-modal-btn').addEventListener('click', (event) => {
-    event.stopPropagation(); // Prevents event from bubbling up
+    document.getElementById("slider-form").classList.add("active");	
+	document.getElementById('close-modal-btn').addEventListener('click', () => {
+	event.stopPropagation(); // Prevents event from bubbling up
+	resetModal();  // Reset after closing
     document.getElementById('policy-modal').style.display = 'none';
 });
 });
@@ -49,6 +50,7 @@ document.getElementById("close-form-btn").addEventListener("click", function () 
 window.addEventListener('click', (event) => {
     const modal = document.getElementById('policy-modal');
     if (event.target === modal) {
+		resetModal();
         modal.style.display = 'none';
     }
 });
@@ -80,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-
+/*
 // Function to load and display policy content
 async function showPolicyModal(type) {
     const modal = document.getElementById('policy-modal');
@@ -96,6 +98,40 @@ async function showPolicyModal(type) {
 
         const text = await response.text();
         content.innerText = text;
+		
+		
+		// Reset scroll position to top before displaying the modal
+        modal.scrollTop = 0;
+        content.scrollTop = 0;
+
+        modal.style.display = 'block';  // Show modal
+    } catch (error) {
+        content.innerHTML = `<p style="color: red;">Error loading content. Please try again later.</p>`;
+        modal.style.display = 'block';  // Show error modal
+    }
+} */
+
+
+async function showPolicyModal(type) {
+	resetModal();
+    const modal = document.getElementById('policy-modal');
+    const content = document.getElementById('policy-content');
+
+    // Google Docs Document IDs
+    const termsDocId = '1cTzmVKgGTkP1TpF3Mk9VNHdXrB3qL0p2Kz_jH6xI5S8';
+    const privacyDocId = '1klfgkfsdVcH3lY1Wvd_I_r0kvmR1bx4ng_nJAMJkPWk';
+
+    // Google Apps Script Web App URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzrJP00Ref29n2q1O2Y9t1YL1w4ayDeOW_CAKup4idFV2L724IlzEQO4ep5_eq2XQx5jA/exec';
+
+    const docId = type === 'terms' ? termsDocId : privacyDocId;
+
+    try {
+        const response = await fetch(`${scriptURL}?docId=${docId}`);
+        if (!response.ok) throw new Error(`Failed to load ${type === 'terms' ? 'Terms of Service' : 'Privacy Policy'}.`);
+
+        const text = await response.text();
+        content.innerText = text;
 
         modal.style.display = 'block';  // Show modal
     } catch (error) {
@@ -103,3 +139,15 @@ async function showPolicyModal(type) {
         modal.style.display = 'block';  // Show error modal
     }
 }
+
+
+function resetModal() {
+    const modal = document.getElementById('policy-modal');
+    const content = document.getElementById('policy-content');
+
+    // Clear content and reset scroll position
+    content.innerHTML = 'Loading...';  
+    modal.scrollTop = 0; // Reset scroll to top
+}
+
+
