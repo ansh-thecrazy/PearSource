@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-		<link REL="SHORTCUT ICON" HREF="ps_logo_big_transparent.png">
+		<link REL="SHORTCUT ICON" HREF="assets/images/ps_logo_big_transparent.png">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="Pearsource - Exciting things are coming soon! Follow us on Instagram for updates.">
@@ -65,14 +65,36 @@
 					</select>
 				</label><br>
 				<label>Experience Details (If Yes): <input type="text" name="experienceDetails"></label><br>
+				
+				<!-- Terms of Service and Privacy Policy -->
+				<div class="terms-container">
+					<label>
+    <input type="checkbox" id="termsCheckbox" required>
+    I agree to the 
+    <a href="#" onclick="showPolicyModal('terms'); return false;">Terms of Service</a> 
+    and 
+    <a href="#" onclick="showPolicyModal('privacy'); return false;">Privacy Policy</a>.
+	</label>
+
+				</div>
+				
 				<button type="submit"><b>Submit</b></button>
 			</form>
 		</div>
 	</div>
 
 
-	   <script src="scripts/mainExec.js"></script>
-
+	   <script src="scripts/mainExec.js?v1.0.1"></script>
+	   
+	<div id="policy-modal" class="modal">
+		<div class="modal-content">
+			<div id="policy-content"></div>
+			<button id="close-modal-btn" class="close-modal-btn">Close</button>
+		</div>
+	</div>
+	
 	</body>
+	
 	<div class="footer">&copy; 2025 PearSource. All Rights Reserved.</div>
+	
 </html>
